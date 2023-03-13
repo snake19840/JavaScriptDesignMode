@@ -1,0 +1,2 @@
+# JavaScriptDesignMode
+JavaScriptDesignMode
