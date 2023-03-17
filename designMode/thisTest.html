@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1">我是一个div1</div>
+    <div id="div2">我是一个div2</div>
+</body>
+</html>
+<script>
+    //做为普通函数调用
+window.name='globalName'
+
+var getName=()=>this.name
+
+console.log(getName())
+
+window.id='window'
+document.getElementById('div1').onclick=function(){
+    alert(this.id) //div
+    var callback=function(){
+        alert(this.id) //window
+    }
+    callback()
+}
+
+//箭头函数的作用域是静态的
+document.getElementById('div1').onclick=()=>{
+    alert(this.id) //window
+    var callback=()=>{
+        alert(this.id) //window
+    }
+    callback()
+}
+
+function func(){
+    'use strict';
+    alert (this)
+}
+func()
+</script>

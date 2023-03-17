@@ -10,3 +10,5 @@ JavaScriptDesignMode
 4. 原型模式和基于原型继承的JavaScript对象系统
 
 ## 二.设计模式
+
+### this的指向
