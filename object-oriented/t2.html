@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="execute">点击我打开电视</button>
+    <button id="undo">点击我关闭电视</button>
+</body>
+</html>
+<script>
+
+
+//用闭包实现命令模式
+
+var Tv={
+    open(){
+        console.log('打开电视')
+    },
+    close(){
+        console.log('关闭电视')
+    }
+}
+
+var createCommand=function(receiver) {
+var execute=function(){
+    return receiver.open()
+}
+var undo=function(){
+    return receiver.close()
+}
+return{
+    execute:execute,
+    undo:undo
+}
+}
+
+var setCommand=function(command){
+    document.getElementById('execute').onclick=function(){
+        command.execute()
+    }
+    document.getElementById('undo').onclick=function(){
+        command.undo()
+    }
+}
+
+setCommand(createCommand(Tv))
+</script>
